@@ -16,5 +16,5 @@
     <string name="main_screen_btn_text_split">/</string>
     <string name="main_screen_btn_text_multiplication">X</string>
     <string name="main_screen_btn_text_result">=</string>
-    <string name="main_screen_text_example">0</string>
+
 </resources>
