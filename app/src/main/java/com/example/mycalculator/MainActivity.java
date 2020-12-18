@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private CalculatorContract.CalculatorPresenterContract presenter;
 
-    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
