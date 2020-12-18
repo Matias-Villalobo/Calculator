@@ -5,21 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.mycalculator.databinding.ActivityMainBinding;
+import com.example.mycalculator.mvp.CalculatorContract;
 import com.example.mycalculator.mvp.CalculatorModelImpl;
 import com.example.mycalculator.mvp.CalculatorPresenterImpl;
 import com.example.mycalculator.mvp.CalculatorViewImpl;
 
 public class MainActivity extends AppCompatActivity {
 
-
     private ActivityMainBinding binding;
-    private CalculatorPresenterImpl presenter;
-
+    private CalculatorContract.CalculatorPresenterContract presenter;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -30,64 +26,68 @@ public class MainActivity extends AppCompatActivity {
 
         presenter = new CalculatorPresenterImpl(new CalculatorModelImpl(), new CalculatorViewImpl(this, binding));
 
+        setListeners();
+    }
+
+    private void setListeners() {
         binding.buttonNumberZero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("0");
+                presenter.numberPressed((String) binding.buttonNumberZero.getText().toString());
             }
         });
         binding.buttonNumberOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("1");
+                presenter.numberPressed((String) binding.buttonNumberOne.getText().toString());
             }
         });
         binding.buttonNumberTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("2");
+                presenter.numberPressed((String) binding.buttonNumberTwo.getText().toString());
             }
         });
         binding.buttonNumberThree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("3");
+                presenter.numberPressed((String) binding.buttonNumberThree.getText().toString());
             }
         });
         binding.buttonNumberFour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("4");
+                presenter.numberPressed((String) binding.buttonNumberFour.getText().toString());
             }
         });
         binding.buttonNumberFive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("5");
+                presenter.numberPressed((String) binding.buttonNumberFive.getText().toString());
             }
         });
         binding.buttonNumberSix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("6");
+                presenter.numberPressed((String) binding.buttonNumberSix.getText().toString());
             }
         });
         binding.buttonNumberSeven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("7");
+                presenter.numberPressed((String) binding.buttonNumberSeven.getText().toString());
             }
         });
         binding.buttonNumberEight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("8");
+                presenter.numberPressed((String) binding.buttonNumberEight.getText().toString());
             }
         });
         binding.buttonNumberNine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed("9");
+                presenter.numberPressed((String) binding.buttonNumberNine.getText().toString());
             }
         });
         binding.buttonFunctionErase.setOnClickListener(new View.OnClickListener() {

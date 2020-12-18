@@ -2,17 +2,18 @@ package com.example.mycalculator.mvp;
 
 public interface CalculatorContract {
 
-    public interface calculatorPresenter {
+    public interface CalculatorPresenterContract {
 
         public void numberPressed(String number);
     }
 
-    public interface calculatorModel {
+    public interface CalculatorModelContract {
         public void saveNumber(String number);
+
+        String getResult();
     }
 
-    public interface calculatorView {
+    public interface CalculatorViewContract {
         public void drawNumber(String number);
     }
-
 }

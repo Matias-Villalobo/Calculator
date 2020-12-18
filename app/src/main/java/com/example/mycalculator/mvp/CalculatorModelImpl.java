@@ -1,20 +1,17 @@
 package com.example.mycalculator.mvp;
 
-public class CalculatorModelImpl implements CalculatorContract.calculatorModel {
+public class CalculatorModelImpl implements CalculatorContract.CalculatorModelContract {
 
-    public String getResult;
-    private String operatorOne;
-    private String operatorTwo;
+    private String firstOperator;
+    private String secondOperator;
     private String operation;
 
     @Override
     public void saveNumber(String number) {
-        operatorOne = number;
+        firstOperator = number;
     }
 
     public String getResult() {
-        return operatorOne;
+        return firstOperator;
     }
-
-
 }
