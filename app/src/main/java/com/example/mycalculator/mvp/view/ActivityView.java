@@ -1,4 +1,4 @@
-package com.example.mycalculator.mvp;
+package com.example.mycalculator.mvp.view;
 
 import android.app.Activity;
 import android.app.FragmentManager;

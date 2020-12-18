@@ -1,4 +1,6 @@
-package com.example.mycalculator.mvp;
+package com.example.mycalculator.mvp.presenter;
+
+import com.example.mycalculator.mvp.contract.CalculatorContract;
 
 public class CalculatorPresenter implements CalculatorContract.CalculatorPresenterContract {
 

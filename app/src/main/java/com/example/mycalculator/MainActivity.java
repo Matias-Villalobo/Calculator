@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.mycalculator.databinding.ActivityMainBinding;
-import com.example.mycalculator.mvp.CalculatorContract;
-import com.example.mycalculator.mvp.CalculatorModel;
-import com.example.mycalculator.mvp.CalculatorPresenter;
-import com.example.mycalculator.mvp.CalculatorView;
+import com.example.mycalculator.mvp.contract.CalculatorContract;
+import com.example.mycalculator.mvp.model.CalculatorModel;
+import com.example.mycalculator.mvp.presenter.CalculatorPresenter;
+import com.example.mycalculator.mvp.view.CalculatorView;
+import com.example.mycalculator.utils.StringUtils;
 
 public class MainActivity extends AppCompatActivity {
 

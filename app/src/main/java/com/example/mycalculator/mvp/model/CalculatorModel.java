@@ -1,4 +1,6 @@
-package com.example.mycalculator.mvp;
+package com.example.mycalculator.mvp.model;
+
+import com.example.mycalculator.mvp.contract.CalculatorContract;
 
 public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
 

@@ -1,7 +1,8 @@
-package com.example.mycalculator.mvp;
+package com.example.mycalculator.mvp.view;
 
 import com.example.mycalculator.MainActivity;
 import com.example.mycalculator.databinding.ActivityMainBinding;
+import com.example.mycalculator.mvp.contract.CalculatorContract;
 
 public class CalculatorView extends ActivityView implements CalculatorContract.CalculatorViewContract {
 

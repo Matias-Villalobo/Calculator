@@ -1,4 +1,4 @@
-package com.example.mycalculator.mvp;
+package com.example.mycalculator.mvp.contract;
 
 public interface CalculatorContract {
 
