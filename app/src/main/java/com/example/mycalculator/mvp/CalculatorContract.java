@@ -3,7 +3,6 @@ package com.example.mycalculator.mvp;
 public interface CalculatorContract {
 
     public interface CalculatorPresenterContract {
-
         public void numberPressed(String number);
     }
 
