@@ -15,6 +15,26 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
     @Override
     public void numberPressed(String number) {
         model.saveNumber(number);
-        view.drawNumber(model.getResult());
+        view.drawNumber(model.getPartialResult());
+
     }
+
+    @Override
+    public void operatorPressed(String toString) {
+        model.saveOperator(toString);
+        view.drawNumber(model.getPartialResult());
+    }
+
+    @Override
+    public void operatorResultPressed() {
+
+        view.drawNumber(model.getFullResult());
+    }
+
+    @Override
+    public void erase() {
+        view.drawNumber(model.eraseResult());
+    }
+
+
 }

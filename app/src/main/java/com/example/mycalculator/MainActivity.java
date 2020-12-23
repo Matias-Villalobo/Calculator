@@ -11,7 +11,6 @@ import com.example.mycalculator.mvp.contract.CalculatorContract;
 import com.example.mycalculator.mvp.model.CalculatorModel;
 import com.example.mycalculator.mvp.presenter.CalculatorPresenter;
 import com.example.mycalculator.mvp.view.CalculatorView;
-import com.example.mycalculator.utils.StringUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,8 +92,40 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonFunctionErase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed(StringUtils.EMPTY_STRING);
+                presenter.erase();
             }
         });
+        binding.buttonFunctionSum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operatorPressed(binding.buttonFunctionSum.getText().toString());
+
+            }
+        });
+        binding.buttonFunctionMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operatorPressed(binding.buttonFunctionMinus.getText().toString());
+            }
+        });
+        binding.buttonFunctionMultiplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operatorPressed(binding.buttonFunctionMultiplication.getText().toString());
+            }
+        });
+        binding.buttonFunctionSplit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operatorPressed(binding.buttonFunctionSplit.getText().toString());
+            }
+        });
+        binding.buttonFunctionResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operatorResultPressed();
+            }
+        });
+
     }
 }
