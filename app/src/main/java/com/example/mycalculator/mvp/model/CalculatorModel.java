@@ -2,11 +2,10 @@ package com.example.mycalculator.mvp.model;
 
 import com.example.mycalculator.mvp.contract.CalculatorContract;
 
-import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_DIVIDE;
-import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_MINUS;
-import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_MULTIPLY;
-import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_SUM;
-
+import static com.example.mycalculator.utils.StringUtils.OPERATOR_DIVIDE;
+import static com.example.mycalculator.utils.StringUtils.OPERATOR_MINUS;
+import static com.example.mycalculator.utils.StringUtils.OPERATOR_MULTIPLY;
+import static com.example.mycalculator.utils.StringUtils.OPERATOR_SUM;
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
 import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE;
 
@@ -70,7 +69,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     }
 
     @Override
-    public void saveOperationSymbol(String toString) {
-        operator = toString;
+    public void saveOperationSymbol(String operatorSymbol) {
+        operator = operatorSymbol;
     }
 }

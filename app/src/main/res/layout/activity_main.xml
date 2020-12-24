@@ -11,14 +11,12 @@
         style="@style/calculatorScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
+    
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:columnCount="@integer/grid_layout_column_count"
         android:rowCount="@integer/grid_layout_row_count">
-
 
         <Button
             android:id="@+id/button_number_seven"

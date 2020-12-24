@@ -22,7 +22,7 @@ public interface CalculatorContract {
 
         String eraseResult();
 
-        void saveOperationSymbol(String toString);
+        void saveOperationSymbol(String operatorSymbol);
     }
 
     public interface CalculatorViewContract {
