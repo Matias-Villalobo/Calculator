@@ -16,18 +16,16 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
     public void numberPressed(String number) {
         model.saveNumber(number);
         view.drawNumber(model.getPartialResult());
-
     }
 
     @Override
-    public void operationSymbolPressed(String toString) {
-        model.saveOperationSymbol(toString);
+    public void operationSymbolPressed(String operatorUsed) {
+        model.saveOperationSymbol(operatorUsed);
         view.drawNumber(model.getPartialResult());
     }
 
     @Override
     public void operatorResultPressed() {
-
         view.drawNumber(model.getFullResult());
     }
 
@@ -35,6 +33,5 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
     public void erase() {
         view.drawNumber(model.eraseResult());
     }
-
 
 }

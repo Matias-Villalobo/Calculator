@@ -5,7 +5,7 @@ public interface CalculatorContract {
     public interface CalculatorPresenterContract {
         public void numberPressed(String number);
 
-        public void operationSymbolPressed(String toString);
+        public void operationSymbolPressed(String operatorUsed);
 
         public void operatorResultPressed();
 

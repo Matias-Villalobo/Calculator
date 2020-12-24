@@ -2,12 +2,13 @@ package com.example.mycalculator.mvp.model;
 
 import com.example.mycalculator.mvp.contract.CalculatorContract;
 
-import static com.example.mycalculator.symbols.OperatorsSymbols.operatorDivide;
-import static com.example.mycalculator.symbols.OperatorsSymbols.operatorMinus;
-import static com.example.mycalculator.symbols.OperatorsSymbols.operatorMultiply;
-import static com.example.mycalculator.symbols.OperatorsSymbols.operatorSum;
+import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_DIVIDE;
+import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_MINUS;
+import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_MULTIPLY;
+import static com.example.mycalculator.utils.ConstantsUtils.OPERATOR_SUM;
 
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
+import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE;
 
 public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
 
@@ -25,7 +26,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
             secondOperand += number;
         }
     }
-
+    @Override
     public String getPartialResult() {
 
         return (firstOperand + operator + secondOperand);
@@ -36,24 +37,24 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
 
         switch (operator) {
 
-            case operatorSum:
+            case OPERATOR_SUM:
                 result = String.valueOf((Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand)));
                 break;
 
-            case operatorMinus:
+            case OPERATOR_MINUS:
                 result = String.valueOf((Double.parseDouble(firstOperand) - Double.parseDouble(secondOperand)));
                 break;
 
-            case operatorDivide:
+            case OPERATOR_DIVIDE:
                 result = String.valueOf((Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand)));
                 break;
 
-            case operatorMultiply:
+            case OPERATOR_MULTIPLY:
                 result = String.valueOf((Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand)));
                 break;
 
             default:
-                result = "Error, unknow Symbol used";
+                result = ERROR_MESSAGE;
         }
 
         return result;
@@ -61,11 +62,11 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
 
     @Override
     public String eraseResult() {
-        result = "";
-        firstOperand = "";
-        secondOperand = "";
-        operator = "";
-        return "";
+        result = EMPTY_STRING;
+        firstOperand = EMPTY_STRING;
+        secondOperand = EMPTY_STRING;
+        operator = EMPTY_STRING;
+        return EMPTY_STRING;
     }
 
     @Override
