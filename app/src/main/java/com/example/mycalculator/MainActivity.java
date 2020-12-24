@@ -2,7 +2,6 @@ package com.example.mycalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -98,26 +97,26 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonFunctionSum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.operatorPressed(binding.buttonFunctionSum.getText().toString());
+                presenter.operationSymbolPressed(binding.buttonFunctionSum.getText().toString());
 
             }
         });
         binding.buttonFunctionMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.operatorPressed(binding.buttonFunctionMinus.getText().toString());
+                presenter.operationSymbolPressed(binding.buttonFunctionMinus.getText().toString());
             }
         });
         binding.buttonFunctionMultiplication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.operatorPressed(binding.buttonFunctionMultiplication.getText().toString());
+                presenter.operationSymbolPressed(binding.buttonFunctionMultiplication.getText().toString());
             }
         });
-        binding.buttonFunctionSplit.setOnClickListener(new View.OnClickListener() {
+        binding.buttonFunctionDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.operatorPressed(binding.buttonFunctionSplit.getText().toString());
+                presenter.operationSymbolPressed(binding.buttonFunctionDivide.getText().toString());
             }
         });
         binding.buttonFunctionResult.setOnClickListener(new View.OnClickListener() {

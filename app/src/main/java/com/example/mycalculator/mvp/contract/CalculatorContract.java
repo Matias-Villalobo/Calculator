@@ -5,7 +5,7 @@ public interface CalculatorContract {
     public interface CalculatorPresenterContract {
         public void numberPressed(String number);
 
-        public void operatorPressed(String toString);
+        public void operationSymbolPressed(String toString);
 
         public void operatorResultPressed();
 
@@ -22,7 +22,7 @@ public interface CalculatorContract {
 
         String eraseResult();
 
-        void saveOperator(String toString);
+        void saveOperationSymbol(String toString);
     }
 
     public interface CalculatorViewContract {

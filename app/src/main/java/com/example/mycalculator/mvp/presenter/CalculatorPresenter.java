@@ -20,8 +20,8 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
     }
 
     @Override
-    public void operatorPressed(String toString) {
-        model.saveOperator(toString);
+    public void operationSymbolPressed(String toString) {
+        model.saveOperationSymbol(toString);
         view.drawNumber(model.getPartialResult());
     }
 

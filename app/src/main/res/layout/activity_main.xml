@@ -110,7 +110,7 @@
             android:text="@string/main_screen_btn_text_zero" />
 
         <Button
-            android:id="@+id/button_function_split"
+            android:id="@+id/button_function_divide"
             style="@style/calculatorButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

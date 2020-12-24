@@ -2,20 +2,27 @@ package com.example.mycalculator.mvp.model;
 
 import com.example.mycalculator.mvp.contract.CalculatorContract;
 
+import static com.example.mycalculator.symbols.OperatorsSymbols.operatorDivide;
+import static com.example.mycalculator.symbols.OperatorsSymbols.operatorMinus;
+import static com.example.mycalculator.symbols.OperatorsSymbols.operatorMultiply;
+import static com.example.mycalculator.symbols.OperatorsSymbols.operatorSum;
+
+import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
+
 public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
 
-    private String firstOperand = "";
-    private String secondOperand = "";
-    private String operator = "";
-    private String result = "";
+    private String firstOperand = EMPTY_STRING;
+    private String secondOperand = EMPTY_STRING;
+    private String operator = EMPTY_STRING;
+    private String result = EMPTY_STRING;
 
 
     @Override
     public void saveNumber(String number) {
         if (operator.isEmpty()) {
-            firstOperand = firstOperand + number;
+            firstOperand += number;
         } else {
-            secondOperand = secondOperand + number;
+            secondOperand += number;
         }
     }
 
@@ -29,24 +36,24 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
 
         switch (operator) {
 
-            case "+":
+            case operatorSum:
                 result = String.valueOf((Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand)));
                 break;
 
-            case "-":
+            case operatorMinus:
                 result = String.valueOf((Double.parseDouble(firstOperand) - Double.parseDouble(secondOperand)));
                 break;
 
-            case "/":
+            case operatorDivide:
                 result = String.valueOf((Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand)));
                 break;
 
-            case "X":
+            case operatorMultiply:
                 result = String.valueOf((Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand)));
                 break;
 
             default:
-                throw new IllegalStateException("Error");
+                result = "Error, unknow Symbol used";
         }
 
         return result;
@@ -62,7 +69,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     }
 
     @Override
-    public void saveOperator(String toString) {
+    public void saveOperationSymbol(String toString) {
         operator = toString;
     }
 }
