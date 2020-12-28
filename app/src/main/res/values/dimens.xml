@@ -3,4 +3,11 @@
     <dimen name="main_result_tv_size">36sp</dimen>
     <dimen name="main_btn_padding">5dp</dimen>
     <dimen name="main_btn_size">16sp</dimen>
+    //new things
+    <dimen name="operations_btns_margin">1dp</dimen>
+    <dimen name="number_btns_margin">5dp</dimen>
+    <dimen name="all_elements_weight">25</dimen>
+    <dimen name="layout_weightSum">100</dimen>
+    //TextSize
+    <dimen name="textView_height">100dp</dimen>
 </resources>
