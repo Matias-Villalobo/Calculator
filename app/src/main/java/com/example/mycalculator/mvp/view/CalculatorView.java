@@ -17,4 +17,5 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
     public void drawNumber(String number) {
         binding.screenTextExample.setText(number);
     }
+
 }

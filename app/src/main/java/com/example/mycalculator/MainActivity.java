@@ -2,7 +2,6 @@ package com.example.mycalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,7 +10,6 @@ import com.example.mycalculator.mvp.contract.CalculatorContract;
 import com.example.mycalculator.mvp.model.CalculatorModel;
 import com.example.mycalculator.mvp.presenter.CalculatorPresenter;
 import com.example.mycalculator.mvp.view.CalculatorView;
-import com.example.mycalculator.utils.StringUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,8 +91,40 @@ public class MainActivity extends AppCompatActivity {
         binding.buttonFunctionErase.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.numberPressed(StringUtils.EMPTY_STRING);
+                presenter.erase();
             }
         });
+        binding.buttonFunctionSum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operationSymbolPressed(binding.buttonFunctionSum.getText().toString());
+
+            }
+        });
+        binding.buttonFunctionMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operationSymbolPressed(binding.buttonFunctionMinus.getText().toString());
+            }
+        });
+        binding.buttonFunctionMultiplication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operationSymbolPressed(binding.buttonFunctionMultiplication.getText().toString());
+            }
+        });
+        binding.buttonFunctionDivide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operationSymbolPressed(binding.buttonFunctionDivide.getText().toString());
+            }
+        });
+        binding.buttonFunctionResult.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.operatorResultPressed();
+            }
+        });
+
     }
 }
