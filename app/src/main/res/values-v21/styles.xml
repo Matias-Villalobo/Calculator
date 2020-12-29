@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <style name="calculatorButton">
+    <style name="CalculatorButton">
         <item name="android:textColor">@color/green</item>
         <item name="android:textSize">@dimen/main_btn_size</item>
         <item name="android:backgroundTint">@color/black</item>
         <item name="android:padding">@dimen/main_btn_padding</item>
+        <item name="android:layout_margin">@dimen/number_btns_margin</item>
+        <item name="android:layout_weight">@integer/layout_weightValue</item>
     </style>
 
-    <style name="calculatorScreen">
+    <style name="CalculatorScreen">
         <item name="android:background">@color/dark_green</item>
         <item name="android:textSize">@dimen/main_result_tv_size</item>
-        <item name="android:height">@dimen/textView_height</item>
+        <item name="android:layout_height">@dimen/main_result_tv_height</item>
     </style>
 
-    <style name="calculatorOperationsButtons">
+    <style name="CalculatorOperationsButtons">
         <item name="android:textColor">@color/green</item>
         <item name="android:textSize">@dimen/main_btn_size</item>
         <item name="android:backgroundTint">@color/grey</item>
         <item name="android:padding">@dimen/main_btn_padding</item>
         <item name="android:layout_margin">@dimen/operations_btns_margin</item>
+        <item name="android:layout_weight">@integer/layout_weightValue</item>
+    </style>
+
+    <style name="linearWeightValue">
+        <item name="android:layout_weight">@integer/layout_weightValue</item>
     </style>
 </resources>
