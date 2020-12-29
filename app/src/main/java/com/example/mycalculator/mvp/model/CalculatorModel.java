@@ -28,7 +28,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     @Override
     public String getPartialResult() {
 
-        return (firstOperand + operator + secondOperand);
+        return (firstOperand +operator+ secondOperand);
     }
 
     @Override
@@ -37,7 +37,10 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         switch (operator) {
 
             case OPERATOR_SUM:
-                result = String.valueOf((Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand)));
+                if(result == EMPTY_STRING){
+                    result = String.valueOf((Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand)));
+                }
+
                 break;
 
             case OPERATOR_MINUS:

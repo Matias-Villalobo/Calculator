@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/screen_text_example"
-        style="@style/CalculatorScreen"
+        style="@style/CalculatorScreenInterface"
         android:layout_width="match_parent" />
 
     <LinearLayout
@@ -19,21 +19,21 @@
 
         <Button
             android:id="@+id/button_number_seven"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_seven" />
 
         <Button
             android:id="@+id/button_number_eight"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_eight" />
 
         <Button
             android:id="@+id/button_number_nine"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_nine" />
@@ -55,21 +55,21 @@
 
         <Button
             android:id="@+id/button_number_four"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_four" />
 
         <Button
             android:id="@+id/button_number_five"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_five" />
 
         <Button
             android:id="@+id/button_number_six"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_six" />
@@ -90,21 +90,21 @@
 
         <Button
             android:id="@+id/button_number_one"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_one" />
 
         <Button
             android:id="@+id/button_number_two"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_two" />
 
         <Button
             android:id="@+id/button_number_three"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_three" />
@@ -125,7 +125,7 @@
 
         <Button
             android:id="@+id/button_number_zero"
-            style="@style/CalculatorButton"
+            style="@style/CalculatorNumbersButtons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/main_screen_btn_text_zero" />
