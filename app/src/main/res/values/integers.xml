@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="grid_layout_column_count">4</integer>
-    <integer name="grid_layout_row_count">4</integer>
+    <integer name="layout_weight_value">1</integer>
 </resources>

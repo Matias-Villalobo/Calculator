@@ -25,6 +25,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
             secondOperand += number;
         }
     }
+
     @Override
     public String getPartialResult() {
 
@@ -37,19 +38,22 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         switch (operator) {
 
             case OPERATOR_SUM:
-                result = String.valueOf((Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand)));
+                if (result == EMPTY_STRING) {
+                    result = String.valueOf(Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand));
+                }
+
                 break;
 
             case OPERATOR_MINUS:
-                result = String.valueOf((Double.parseDouble(firstOperand) - Double.parseDouble(secondOperand)));
+                result = String.valueOf(Double.parseDouble(firstOperand) - Double.parseDouble(secondOperand));
                 break;
 
             case OPERATOR_DIVIDE:
-                result = String.valueOf((Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand)));
+                result = String.valueOf(Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand));
                 break;
 
             case OPERATOR_MULTIPLY:
-                result = String.valueOf((Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand)));
+                result = String.valueOf(Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand));
                 break;
 
             default:
