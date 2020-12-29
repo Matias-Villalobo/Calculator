@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CalculatorNumbersButtons">
+    <style name="CalculatorNumbersButton">
         <item name="android:textColor">@color/green</item>
         <item name="android:textSize">@dimen/main_btn_size</item>
         <item name="android:backgroundTint">@color/black</item>
@@ -15,7 +15,7 @@
         <item name="android:layout_height">@dimen/main_result_tv_height</item>
     </style>
 
-    <style name="CalculatorOperationsButtons">
+    <style name="CalculatorOperationsButton">
         <item name="android:textColor">@color/green</item>
         <item name="android:textSize">@dimen/main_btn_size</item>
         <item name="android:backgroundTint">@color/grey</item>
@@ -24,7 +24,7 @@
         <item name="android:layout_weight">@integer/layout_weight_value</item>
     </style>
 
-    <style name="linearWeightValue">
+    <style name="LinearWeightValue">
         <item name="android:layout_weight">@integer/layout_weight_value</item>
     </style>
 </resources>
