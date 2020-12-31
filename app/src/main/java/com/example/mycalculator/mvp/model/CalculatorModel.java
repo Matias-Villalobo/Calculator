@@ -2,6 +2,8 @@ package com.example.mycalculator.mvp.model;
 
 import com.example.mycalculator.mvp.contract.CalculatorContract;
 
+import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE_DIVISION;
+import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE_INVALID_FORMAT;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_DIVIDE;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_MINUS;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_MULTIPLY;
@@ -16,7 +18,6 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     private String operator = EMPTY_STRING;
     private String result = EMPTY_STRING;
 
-
     @Override
     public void saveNumber(String number) {
         if (operator.isEmpty()) {
@@ -28,52 +29,69 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
 
     @Override
     public String getPartialResult() {
-
         return (firstOperand + operator + secondOperand);
+    }
+
+    private boolean isValidOperation(){
+        if (operator.isEmpty()) {
+            if (firstOperand.isEmpty()){
+                result = "0";
+            } else {
+                result = String.valueOf(Double.parseDouble(firstOperand));
+            }
+            return false;
+        }else if (secondOperand.isEmpty()){
+            result = ERROR_MESSAGE_INVALID_FORMAT;
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String getFullResult() {
 
-        switch (operator) {
+         if (isValidOperation()) {
 
-            case OPERATOR_SUM:
-                if (result == EMPTY_STRING) {
-                    result = String.valueOf(Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand));
-                }
+            switch (operator) {
 
-                break;
+                case OPERATOR_SUM:
+                        result = String.valueOf(Double.parseDouble(firstOperand) + Double.parseDouble(secondOperand));
+                        break;
 
-            case OPERATOR_MINUS:
-                result = String.valueOf(Double.parseDouble(firstOperand) - Double.parseDouble(secondOperand));
-                break;
+                case OPERATOR_MINUS:
+                    result = String.valueOf(Double.parseDouble(firstOperand) - Double.parseDouble(secondOperand));
+                    break;
 
-            case OPERATOR_DIVIDE:
-                result = String.valueOf(Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand));
-                break;
+                case OPERATOR_DIVIDE:
+                    if ((Double.parseDouble(secondOperand)) == Double.parseDouble("0")) {
+                        result = ERROR_MESSAGE_DIVISION;
+                    } else {
+                        result = String.valueOf(Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand));
+                    }
+                    break;
 
-            case OPERATOR_MULTIPLY:
-                result = String.valueOf(Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand));
-                break;
+                case OPERATOR_MULTIPLY:
+                    result = String.valueOf(Double.parseDouble(firstOperand) * Double.parseDouble(secondOperand));
+                    break;
 
-            default:
-                result = ERROR_MESSAGE;
+                default:
+                    result = ERROR_MESSAGE;
+            }
+        }
+            return result;
+        }
+        
+        @Override
+        public String eraseResult () {
+            result = EMPTY_STRING;
+            firstOperand = EMPTY_STRING;
+            secondOperand = EMPTY_STRING;
+            operator = EMPTY_STRING;
+            return EMPTY_STRING;
         }
 
-        return result;
+        @Override
+        public void saveOperationSymbol (String operatorSymbol){
+            operator = operatorSymbol;
+        }
     }
-
-    @Override
-    public String eraseResult() {
-        result = EMPTY_STRING;
-        firstOperand = EMPTY_STRING;
-        secondOperand = EMPTY_STRING;
-        operator = EMPTY_STRING;
-        return EMPTY_STRING;
-    }
-
-    @Override
-    public void saveOperationSymbol(String operatorSymbol) {
-        operator = operatorSymbol;
-    }
-}

@@ -21,9 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         presenter = new CalculatorPresenter(new CalculatorModel(), new CalculatorView(this, binding));
-
         setListeners();
     }
 
@@ -125,6 +123,5 @@ public class MainActivity extends AppCompatActivity {
                 presenter.operatorResultPressed();
             }
         });
-
     }
 }

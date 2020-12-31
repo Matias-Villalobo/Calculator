@@ -28,5 +28,4 @@ public interface CalculatorContract {
     public interface CalculatorViewContract {
         public void drawNumber(String number);
     }
-
 }
