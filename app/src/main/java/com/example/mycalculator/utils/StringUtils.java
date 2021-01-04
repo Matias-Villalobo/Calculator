@@ -9,5 +9,7 @@ public class StringUtils {
     public static final String OPERATOR_MULTIPLY = "X";
     public static final String ERROR_MESSAGE_DIVISION = "Error, can not divide by zero";
     public static final String ERROR_MESSAGE_INVALID_FORMAT = "Error: Invalid format";
+    public static final String TEXT_ZERO_NUMBER = "0";
+
 
 }

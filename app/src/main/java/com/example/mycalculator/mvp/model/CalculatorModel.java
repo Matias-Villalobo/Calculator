@@ -10,6 +10,8 @@ import static com.example.mycalculator.utils.StringUtils.OPERATOR_MULTIPLY;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_SUM;
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
 import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE;
+import static com.example.mycalculator.utils.StringUtils.TEXT_ZERO_NUMBER;
+
 
 public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
 
@@ -17,6 +19,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     private String secondOperand = EMPTY_STRING;
     private String operator = EMPTY_STRING;
     private String result = EMPTY_STRING;
+
 
     @Override
     public void saveNumber(String number) {
@@ -35,7 +38,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     private boolean isValidOperation(){
         if (operator.isEmpty()) {
             if (firstOperand.isEmpty()){
-                result = "0";
+                result = EMPTY_STRING;
             } else {
                 result = String.valueOf(Double.parseDouble(firstOperand));
             }
@@ -63,7 +66,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
                     break;
 
                 case OPERATOR_DIVIDE:
-                    if ((Double.parseDouble(secondOperand)) == Double.parseDouble("0")) {
+                    if ((Double.parseDouble(secondOperand)) == Double.parseDouble(TEXT_ZERO_NUMBER)) {
                         result = ERROR_MESSAGE_DIVISION;
                     } else {
                         result = String.valueOf(Double.parseDouble(firstOperand) / Double.parseDouble(secondOperand));
@@ -80,7 +83,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         }
             return result;
         }
-        
+
         @Override
         public String eraseResult () {
             result = EMPTY_STRING;
