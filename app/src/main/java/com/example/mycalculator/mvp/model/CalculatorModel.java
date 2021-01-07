@@ -1,5 +1,6 @@
 package com.example.mycalculator.mvp.model;
 
+import com.example.mycalculator.mvp.Operand;
 import com.example.mycalculator.mvp.contract.CalculatorContract;
 
 import java.util.function.Function;
@@ -14,59 +15,14 @@ import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
 import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE;
 import static com.example.mycalculator.utils.StringUtils.TEXT_ZERO_NUMBER;
 
-public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
+public class CalculatorModel implements CalculatorContract.CalculatorModelContract{
 
     private Operand firstOperand = new Operand();
     private Operand secondOperand = new Operand();
     private String operator = EMPTY_STRING;
     private String result = EMPTY_STRING;
 
-    private class Operand {
-        private String sign = "";
-        private String value = "";
 
-        private String getSign() {
-            return sign;
-        }
-
-        public void eraseOperands() {
-            sign = "";
-            value = "";
-        }
-
-        public Double getValue() {
-            if (value == "") {
-                return 0.0;
-            } else {
-                return Double.parseDouble(sign+value);
-            }
-        }
-
-        private void setSign(String sign) {
-            this.sign = sign;
-        }
-
-        private void setValue(String value) {
-            this.value = value;
-        }
-
-        public Boolean isEmpty() {
-            return value.isEmpty();
-        }
-
-        public String getPartialResult() {
-            return sign + firstOperand + operator + secondOperand;
-        }
-
-        public String getFullResult() {
-            return null;
-        }
-
-        public void addNumber(String number) {
-            value += number;
-        }
-
-    }
 
 
     @Override
@@ -129,11 +85,11 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
                 default:
                     result = ERROR_MESSAGE;
             }
-            if (result.substring(0).equals("-")) {
-                firstOperand.sign = "-";
+            if (result.substring(0).equals(OPERATOR_MINUS)) {
+                firstOperand.sign = OPERATOR_MINUS;
                 firstOperand.value = result.substring(1, result.length());
             } else {
-                firstOperand.sign = "";
+                firstOperand.sign = EMPTY_STRING;
                 firstOperand.value = result;
             }
 
@@ -155,11 +111,11 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     @Override
     public void saveOperationSymbol(String operatorSymbol) {
         if (firstOperand.isEmpty()) {
-            firstOperand.setSign("-");
+            firstOperand.setSign(OPERATOR_MINUS);
         } else if (operator.isEmpty()) {
             operator = operatorSymbol;
         } else {
-            secondOperand.setSign("-");
+            secondOperand.setSign(OPERATOR_MINUS);
         }
     }
 }
