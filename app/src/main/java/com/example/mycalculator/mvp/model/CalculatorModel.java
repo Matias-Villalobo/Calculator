@@ -3,8 +3,8 @@ package com.example.mycalculator.mvp.model;
 import com.example.mycalculator.mvp.Operand;
 import com.example.mycalculator.mvp.contract.CalculatorContract;
 
-import java.util.function.Function;
-
+import static com.example.mycalculator.utils.NumbersUtils.INT_ONE_NUMBER;
+import static com.example.mycalculator.utils.NumbersUtils.INT_ZERO_NUMBER;
 import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE_DIVISION;
 import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE_INVALID_FORMAT;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_DIVIDE;
@@ -13,17 +13,13 @@ import static com.example.mycalculator.utils.StringUtils.OPERATOR_MULTIPLY;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_SUM;
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
 import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE;
-import static com.example.mycalculator.utils.StringUtils.TEXT_ZERO_NUMBER;
 
-public class CalculatorModel implements CalculatorContract.CalculatorModelContract{
+public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
 
     private Operand firstOperand = new Operand();
     private Operand secondOperand = new Operand();
     private String operator = EMPTY_STRING;
     private String result = EMPTY_STRING;
-
-
-
 
     @Override
     public void saveNumber(String number) {
@@ -53,7 +49,6 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         }
         return true;
     }
-
 
     @Override
     public String getFullResult() {
@@ -85,9 +80,9 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
                 default:
                     result = ERROR_MESSAGE;
             }
-            if (result.substring(0).equals(OPERATOR_MINUS)) {
+            if (result.substring(INT_ZERO_NUMBER).equals(OPERATOR_MINUS)) {
                 firstOperand.sign = OPERATOR_MINUS;
-                firstOperand.value = result.substring(1, result.length());
+                firstOperand.value = result.substring(INT_ONE_NUMBER, result.length());
             } else {
                 firstOperand.sign = EMPTY_STRING;
                 firstOperand.value = result;

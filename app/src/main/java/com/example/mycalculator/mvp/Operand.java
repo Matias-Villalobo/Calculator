@@ -1,5 +1,6 @@
 package com.example.mycalculator.mvp;
 
+import static com.example.mycalculator.utils.NumbersUtils.DOUBLE_ZERO_NUMBER;
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
 
 public class Operand {
@@ -12,15 +13,15 @@ public class Operand {
     }
 
     public void eraseOperands() {
-        sign = "";
-        value = "";
+        sign = EMPTY_STRING;
+        value = EMPTY_STRING;
     }
 
     public Double getValue() {
         if (value == EMPTY_STRING) {
-            return 0.0;
+            return DOUBLE_ZERO_NUMBER;
         } else {
-            return Double.parseDouble(sign+value);
+            return Double.parseDouble(sign + value);
         }
     }
 
