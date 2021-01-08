@@ -26,11 +26,31 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
 
     @Override
     public void operatorResultPressed() {
-        view.drawNumber(model.getFullResult());
+        model.doOperations();
+        switch (model.getError()) {
+            case NONE: {
+                view.drawNumber(model.getResult());
+                break;
+            }
+
+            case ERROR_MESSAGE: {
+                view.showErrorMessage(String.valueOf(model.getError()));
+                break;
+            }
+            case ERROR_MESSAGE_DIVISION: {
+                view.showErrorDivision(String.valueOf(model.getError()));
+                break;
+            }
+            case ERROR_MESSAGE_INVALID_FORMAT: {
+                view.showErrorInvalidOperation(String.valueOf(model.getError()));
+                break;
+            }
+        }
     }
 
     @Override
     public void erase() {
         view.drawNumber(model.eraseResult());
     }
+
 }

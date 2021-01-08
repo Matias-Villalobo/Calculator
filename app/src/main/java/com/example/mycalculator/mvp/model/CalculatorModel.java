@@ -2,17 +2,18 @@ package com.example.mycalculator.mvp.model;
 
 import com.example.mycalculator.mvp.Operand;
 import com.example.mycalculator.mvp.contract.CalculatorContract;
+import com.example.mycalculator.utils.ErrorUtils;
 
-import static com.example.mycalculator.utils.NumbersUtils.INT_ONE_NUMBER;
-import static com.example.mycalculator.utils.NumbersUtils.INT_ZERO_NUMBER;
-import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE_DIVISION;
-import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE_INVALID_FORMAT;
+
+import static com.example.mycalculator.utils.NumbersUtils.POSITION_ZERO;
+import static com.example.mycalculator.utils.NumbersUtils.ZERO_NUMBER_DOUBLE_TYPE;
+import static com.example.mycalculator.utils.NumbersUtils.POSITION_ONE;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_DIVIDE;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_MINUS;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_MULTIPLY;
 import static com.example.mycalculator.utils.StringUtils.OPERATOR_SUM;
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
-import static com.example.mycalculator.utils.StringUtils.ERROR_MESSAGE;
+
 
 public class CalculatorModel implements CalculatorContract.CalculatorModelContract {
 
@@ -20,6 +21,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     private Operand secondOperand = new Operand();
     private String operator = EMPTY_STRING;
     private String result = EMPTY_STRING;
+    private ErrorUtils error;
 
     @Override
     public void saveNumber(String number) {
@@ -30,9 +32,17 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         }
     }
 
+    public String getValue() {
+        String firstValue = String.valueOf(firstOperand.getValue());
+        String secondValue = String.valueOf(secondOperand.getValue());
+        String operatorUsed = operator;
+
+        return firstValue + operatorUsed + secondValue;
+    }
+
     @Override
     public String getPartialResult() {
-        return String.valueOf(firstOperand.getValue()) + operator + String.valueOf(secondOperand.getValue());
+        return getValue();
     }
 
     private boolean isValidOperation() {
@@ -44,14 +54,15 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
             }
             return false;
         } else if (secondOperand.isEmpty()) {
-            result = ERROR_MESSAGE_INVALID_FORMAT;
+            result = EMPTY_STRING;
+            error = ErrorUtils.ERROR_MESSAGE_INVALID_FORMAT;
             return false;
         }
         return true;
     }
 
     @Override
-    public String getFullResult() {
+    public void doOperations() {
 
         if (isValidOperation()) {
 
@@ -66,8 +77,9 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
                     break;
 
                 case OPERATOR_DIVIDE:
-                    if (firstOperand.getValue() == secondOperand.getValue()) {
-                        result = ERROR_MESSAGE_DIVISION;
+                    if (secondOperand.getValue() == ZERO_NUMBER_DOUBLE_TYPE) {
+                        result = EMPTY_STRING;
+                        error = ErrorUtils.ERROR_MESSAGE_DIVISION;
                     } else {
                         result = String.valueOf(firstOperand.getValue() / secondOperand.getValue());
                     }
@@ -78,20 +90,29 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
                     break;
 
                 default:
-                    result = ERROR_MESSAGE;
+                    result = EMPTY_STRING;
+                    error = ErrorUtils.ERROR_MESSAGE;
+                    break;
             }
-            if (result.substring(INT_ZERO_NUMBER).equals(OPERATOR_MINUS)) {
-                firstOperand.sign = OPERATOR_MINUS;
-                firstOperand.value = result.substring(INT_ONE_NUMBER, result.length());
-            } else {
-                firstOperand.sign = EMPTY_STRING;
-                firstOperand.value = result;
-            }
+            checkNumberSign();
 
+            error = ErrorUtils.NONE;
             secondOperand.eraseOperands();
         }
+    }
 
+    public String getResult() {
         return result;
+    }
+
+    private void checkNumberSign() {
+        if (result.substring(POSITION_ZERO).equals(OPERATOR_MINUS)) {
+            firstOperand.sign = OPERATOR_MINUS;
+            firstOperand.value = result.substring(POSITION_ONE, result.length());
+        } else {
+            firstOperand.sign = EMPTY_STRING;
+            firstOperand.value = result;
+        }
     }
 
     @Override
@@ -112,5 +133,10 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         } else {
             secondOperand.setSign(OPERATOR_MINUS);
         }
+    }
+
+    @Override
+    public ErrorUtils getError() {
+        return error;
     }
 }

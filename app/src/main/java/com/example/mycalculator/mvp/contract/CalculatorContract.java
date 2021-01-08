@@ -1,5 +1,7 @@
 package com.example.mycalculator.mvp.contract;
 
+import com.example.mycalculator.utils.ErrorUtils;
+
 public interface CalculatorContract {
 
     public interface CalculatorPresenterContract {
@@ -16,16 +18,26 @@ public interface CalculatorContract {
     public interface CalculatorModelContract {
         public void saveNumber(String number);
 
-        String getPartialResult();
+        public String getPartialResult();
 
-        String getFullResult();
+        public void doOperations();
 
-        String eraseResult();
+        public String getResult();
 
-        void saveOperationSymbol(String operatorSymbol);
+        public String eraseResult();
+
+        public void saveOperationSymbol(String operatorSymbol);
+
+        public ErrorUtils getError();
     }
 
     public interface CalculatorViewContract {
         public void drawNumber(String number);
+
+        public void showErrorDivision(String errorMessage);
+
+        public void showErrorInvalidOperation(String errorMessage);
+
+        public void showErrorMessage(String errorMessage);
     }
 }
