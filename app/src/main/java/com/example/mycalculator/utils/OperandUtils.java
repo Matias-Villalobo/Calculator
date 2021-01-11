@@ -1,9 +1,9 @@
-package com.example.mycalculator.mvp;
+package com.example.mycalculator.utils;
 
 import static com.example.mycalculator.utils.NumbersUtils.ZERO_NUMBER_DOUBLE_TYPE;
 import static com.example.mycalculator.utils.StringUtils.EMPTY_STRING;
 
-public class Operand {
+public class OperandUtils {
 
     public String sign = EMPTY_STRING;
     public String value = EMPTY_STRING;

@@ -6,5 +6,3 @@ package com.example.mycalculator.utils;
         ERROR_MESSAGE_INVALID_FORMAT,
         ERROR_MESSAGE
     }
-
-

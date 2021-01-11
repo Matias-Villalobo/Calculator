@@ -19,19 +19,31 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
     public void drawNumber(String number) {
         binding.screenTextExample.setText(number);
     }
+
     @Override
     public void showErrorDivision(String errorMessage) {
-        binding.screenTextExample.setText(getContext().getString(R.string.error_message_in_division));
+
     }
+
     @Override
     public void showErrorInvalidOperation(String errorMessage) {
-        binding.screenTextExample.setText(getContext().getString(R.string.error_message_when_invalid_format));
+
     }
+
     @Override
     public void showErrorMessage(String errorMessage) {
-        binding.screenTextExample.setText(getContext().getString((R.string.error_generic_message)));
+
     }
 
+    public void showErrorDivision() {
+        binding.screenTextExample.setText(getContext().getString(R.string.error_message_in_division));
+    }
 
+    public void showErrorInvalidOperation() {
+        binding.screenTextExample.setText(getContext().getString(R.string.error_message_when_invalid_format));
+    }
 
+    public void showErrorMessage() {
+        binding.screenTextExample.setText(getContext().getString((R.string.error_generic_message)));
+    }
 }
