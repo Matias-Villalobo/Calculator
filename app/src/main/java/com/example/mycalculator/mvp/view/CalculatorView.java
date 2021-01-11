@@ -1,5 +1,7 @@
 package com.example.mycalculator.mvp.view;
 
+import android.content.Context;
+
 import com.example.mycalculator.MainActivity;
 import com.example.mycalculator.R;
 import com.example.mycalculator.databinding.ActivityMainBinding;
@@ -22,16 +24,25 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
 
     @Override
     public void showErrorDivision() {
-        binding.screenTextExample.setText(getContext().getString(R.string.error_message_in_division));
+        Context context = getContext();
+        if (context != null) {
+            binding.screenTextExample.setText(getContext().getString(R.string.error_message_in_division));
+        }
     }
 
     @Override
     public void showErrorInvalidOperation() {
-        binding.screenTextExample.setText(getContext().getString(R.string.error_message_when_invalid_format));
+        Context context = getContext();
+        if (context != null) {
+            binding.screenTextExample.setText(getContext().getString(R.string.error_message_when_invalid_format));
+        }
     }
 
     @Override
     public void showErrorMessage() {
-        binding.screenTextExample.setText(getContext().getString((R.string.error_generic_message)));
+        Context context = getContext();
+        if (context != null) {
+            binding.screenTextExample.setText(getContext().getString((R.string.error_generic_message)));
+        }
     }
 }

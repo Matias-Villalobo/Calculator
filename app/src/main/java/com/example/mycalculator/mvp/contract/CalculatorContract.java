@@ -13,8 +13,6 @@ public interface CalculatorContract {
 
         public void erase();
 
-        public void showErrorMessage();
-
     }
 
     public interface CalculatorModelContract {

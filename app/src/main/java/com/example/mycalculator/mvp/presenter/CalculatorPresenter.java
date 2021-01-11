@@ -52,9 +52,4 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
         view.drawNumber(model.eraseResult());
     }
 
-    @Override
-    public void showErrorMessage() {
-
-    }
-
 }
