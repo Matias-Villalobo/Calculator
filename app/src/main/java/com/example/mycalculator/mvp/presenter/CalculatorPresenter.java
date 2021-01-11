@@ -33,15 +33,15 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
                 break;
             }
             case ERROR_MESSAGE: {
-                view.showErrorMessage(String.valueOf(model.getError()));
+                view.showErrorMessage();
                 break;
             }
             case ERROR_MESSAGE_DIVISION: {
-                view.showErrorDivision(String.valueOf(model.getError()));
+                view.showErrorDivision();
                 break;
             }
             case ERROR_MESSAGE_INVALID_FORMAT: {
-                view.showErrorInvalidOperation(String.valueOf(model.getError()));
+                view.showErrorInvalidOperation();
                 break;
             }
         }
@@ -50,6 +50,11 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
     @Override
     public void erase() {
         view.drawNumber(model.eraseResult());
+    }
+
+    @Override
+    public void showErrorMessage() {
+
     }
 
 }

@@ -13,6 +13,8 @@ public interface CalculatorContract {
 
         public void erase();
 
+        public void showErrorMessage();
+
     }
 
     public interface CalculatorModelContract {
@@ -34,10 +36,10 @@ public interface CalculatorContract {
     public interface CalculatorViewContract {
         public void drawNumber(String number);
 
-        public void showErrorDivision(String errorMessage);
+        public void showErrorDivision();
 
-        public void showErrorInvalidOperation(String errorMessage);
+        public void showErrorInvalidOperation();
 
-        public void showErrorMessage(String errorMessage);
+        public void showErrorMessage();
     }
 }

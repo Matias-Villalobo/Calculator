@@ -5,6 +5,7 @@ import com.example.mycalculator.mvp.contract.CalculatorContract;
 import com.example.mycalculator.utils.ErrorUtils;
 
 
+import static com.example.mycalculator.utils.NumbersUtils.NUMBER_ZERO;
 import static com.example.mycalculator.utils.NumbersUtils.POSITION_ZERO;
 import static com.example.mycalculator.utils.NumbersUtils.ZERO_NUMBER_DOUBLE_TYPE;
 import static com.example.mycalculator.utils.NumbersUtils.POSITION_ONE;
@@ -21,7 +22,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     private OperandUtils secondOperandUtils = new OperandUtils();
     private String operator = EMPTY_STRING;
     private String result = EMPTY_STRING;
-    private ErrorUtils error;
+    private ErrorUtils error = ErrorUtils.NONE;
 
     @Override
     public void saveNumber(String number) {
@@ -35,6 +36,10 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
     public String getValue() {
         String firstValue = String.valueOf(firstOperandUtils.getValue());
         String secondValue = String.valueOf(secondOperandUtils.getValue());
+
+        if (secondOperandUtils.isEmpty()) {
+            secondValue = EMPTY_STRING;
+        }
         return firstValue + operator + secondValue;
     }
 
@@ -52,8 +57,8 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
             }
             return false;
         } else if (secondOperandUtils.isEmpty()) {
-            result = EMPTY_STRING;
             error = ErrorUtils.ERROR_MESSAGE_INVALID_FORMAT;
+            result = EMPTY_STRING;
             return false;
         }
         return true;
@@ -68,33 +73,35 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
 
                 case OPERATOR_SUM:
                     result = String.valueOf(firstOperandUtils.getValue() + secondOperandUtils.getValue());
+                    error = ErrorUtils.NONE;
                     break;
 
                 case OPERATOR_MINUS:
                     result = String.valueOf(firstOperandUtils.getValue() - secondOperandUtils.getValue());
+                    error = ErrorUtils.NONE;
                     break;
 
                 case OPERATOR_DIVIDE:
-                    if (secondOperandUtils.getValue() == ZERO_NUMBER_DOUBLE_TYPE) {
+                    if (secondOperandUtils.getValue() == NUMBER_ZERO) {
                         result = EMPTY_STRING;
                         error = ErrorUtils.ERROR_MESSAGE_DIVISION;
                     } else {
                         result = String.valueOf(firstOperandUtils.getValue() / secondOperandUtils.getValue());
+                        error = ErrorUtils.NONE;
                     }
                     break;
 
                 case OPERATOR_MULTIPLY:
                     result = String.valueOf(firstOperandUtils.getValue() * secondOperandUtils.getValue());
+                    error = ErrorUtils.NONE;
                     break;
 
                 default:
-                    result = EMPTY_STRING;
                     error = ErrorUtils.ERROR_MESSAGE;
+                    result = EMPTY_STRING;
                     break;
             }
             updateFirstOperand();
-
-            error = ErrorUtils.NONE;
             secondOperandUtils.eraseOperands();
         }
     }
@@ -111,6 +118,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
             firstOperandUtils.sign = EMPTY_STRING;
             firstOperandUtils.value = result;
         }
+        operator = EMPTY_STRING;
     }
 
     @Override
@@ -119,6 +127,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         firstOperandUtils.eraseOperands();
         secondOperandUtils.eraseOperands();
         operator = EMPTY_STRING;
+        error = ErrorUtils.NONE;
         return EMPTY_STRING;
     }
 

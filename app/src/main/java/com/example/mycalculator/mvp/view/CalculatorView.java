@@ -4,7 +4,7 @@ import com.example.mycalculator.MainActivity;
 import com.example.mycalculator.R;
 import com.example.mycalculator.databinding.ActivityMainBinding;
 import com.example.mycalculator.mvp.contract.CalculatorContract;
-import com.example.mycalculator.utils.StringUtils;
+import com.example.mycalculator.utils.ErrorUtils;
 
 public class CalculatorView extends ActivityView implements CalculatorContract.CalculatorViewContract {
 
@@ -21,28 +21,16 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
     }
 
     @Override
-    public void showErrorDivision(String errorMessage) {
-
-    }
-
-    @Override
-    public void showErrorInvalidOperation(String errorMessage) {
-
-    }
-
-    @Override
-    public void showErrorMessage(String errorMessage) {
-
-    }
-
     public void showErrorDivision() {
         binding.screenTextExample.setText(getContext().getString(R.string.error_message_in_division));
     }
 
+    @Override
     public void showErrorInvalidOperation() {
         binding.screenTextExample.setText(getContext().getString(R.string.error_message_when_invalid_format));
     }
 
+    @Override
     public void showErrorMessage() {
         binding.screenTextExample.setText(getContext().getString((R.string.error_generic_message)));
     }
