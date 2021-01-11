@@ -12,6 +12,7 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
 
     private ActivityMainBinding binding;
 
+
     public CalculatorView(MainActivity mainActivity, ActivityMainBinding binding) {
         super(mainActivity);
         this.binding = binding;
@@ -26,7 +27,7 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
     public void showErrorDivision() {
         Context context = getContext();
         if (context != null) {
-            binding.screenTextExample.setText(getContext().getString(R.string.error_message_in_division));
+            binding.screenTextExample.setText(context.getString(R.string.error_message_in_division));
         }
     }
 
@@ -34,7 +35,7 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
     public void showErrorInvalidOperation() {
         Context context = getContext();
         if (context != null) {
-            binding.screenTextExample.setText(getContext().getString(R.string.error_message_when_invalid_format));
+            binding.screenTextExample.setText(context.getString(R.string.error_message_when_invalid_format));
         }
     }
 
@@ -42,7 +43,7 @@ public class CalculatorView extends ActivityView implements CalculatorContract.C
     public void showErrorMessage() {
         Context context = getContext();
         if (context != null) {
-            binding.screenTextExample.setText(getContext().getString((R.string.error_generic_message)));
+            binding.screenTextExample.setText(context.getString((R.string.error_generic_message)));
         }
     }
 }
