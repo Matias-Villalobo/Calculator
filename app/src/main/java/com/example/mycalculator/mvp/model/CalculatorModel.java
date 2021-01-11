@@ -94,7 +94,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
                     error = ErrorUtils.ERROR_MESSAGE;
                     break;
             }
-            checkNumberSign();
+            updateFirstOperand();
 
             error = ErrorUtils.NONE;
             secondOperand.eraseOperands();
@@ -105,7 +105,7 @@ public class CalculatorModel implements CalculatorContract.CalculatorModelContra
         return result;
     }
 
-    private void checkNumberSign() {
+    private void updateFirstOperand() {
         if (result.substring(POSITION_ZERO).equals(OPERATOR_MINUS)) {
             firstOperand.sign = OPERATOR_MINUS;
             firstOperand.value = result.substring(POSITION_ONE, result.length());

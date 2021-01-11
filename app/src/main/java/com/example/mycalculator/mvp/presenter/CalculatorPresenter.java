@@ -32,7 +32,6 @@ public class CalculatorPresenter implements CalculatorContract.CalculatorPresent
                 view.drawNumber(model.getResult());
                 break;
             }
-
             case ERROR_MESSAGE: {
                 view.showErrorMessage(String.valueOf(model.getError()));
                 break;
