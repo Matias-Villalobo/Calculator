@@ -26,5 +26,6 @@
 
     <style name="LinearWeightValue">
         <item name="android:layout_weight">@integer/layout_weight_value</item>
+        <item name="android:background">@color/light_green</item>
     </style>
 </resources>
