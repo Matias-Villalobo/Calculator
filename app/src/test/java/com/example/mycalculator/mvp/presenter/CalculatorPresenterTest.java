@@ -75,7 +75,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testDivideOperation() {
+    public void testPartialDivideOperation() {
         model.saveNumber(NUMBER_FOUR);
         model.saveOperationSymbol(OPERATOR_DIVIDE);
         presenter.numberPressed(NUMBER_TWO);
@@ -84,7 +84,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperationMultiply() {
+    public void testPartialMultiplyOperation() {
         model.saveNumber(NUMBER_TWO);
         model.saveOperationSymbol(OPERATOR_MULTIPLY);
         presenter.numberPressed(NUMBER_TWO);
@@ -93,14 +93,14 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testNumberPressedFirstOperand() {
+    public void testFirstOperandPressed() {
         presenter.numberPressed(NUMBER_THREE);
         verify(view).drawNumber(model.getPartialResult());
         assertEquals(NUMBER_THREE, model.getPartialResult());
     }
 
     @Test
-    public void testNumberPressedSecondOperand() {
+    public void testSecondOperandPressed() {
         model.saveNumber(NUMBER_THREE);
         model.saveOperationSymbol(OPERATOR_SUM);
         presenter.numberPressed(NUMBER_THREE);
@@ -109,7 +109,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testNumberPressedSecondOperandNegative() {
+    public void testSecondOperandNegativePressed() {
         model.saveNumber(NUMBER_THREE);
         model.saveOperationSymbol(OPERATOR_SUM);
         presenter.numberPressed(OPERATOR_MINUS + NUMBER_THREE);
@@ -118,7 +118,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testNumberPressedFirstOperandNegative() {
+    public void testFirstOperandNegativePressed() {
         model.saveOperationSymbol(OPERATOR_MINUS);
         model.saveNumber(NUMBER_THREE);
         model.saveOperationSymbol(OPERATOR_SUM);
@@ -128,7 +128,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testNumberPressedBothOperandsNegative() {
+    public void testBothNegativeOperandsPressed() {
         model.saveOperationSymbol(OPERATOR_MINUS);
         model.saveNumber(NUMBER_THREE);
         model.saveOperationSymbol(OPERATOR_SUM);
@@ -139,7 +139,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneSum() {
+    public void testOperationSum() {
         model.saveNumber(NUMBER_TWO);
         model.saveOperationSymbol(OPERATOR_SUM);
         model.saveNumber(NUMBER_THREE);
@@ -149,7 +149,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneSumWithNegativeSecond() {
+    public void testOperationSumNegativeSecondOperand() {
         model.saveNumber(NUMBER_FOUR);
         model.saveOperationSymbol(OPERATOR_SUM);
         model.saveOperationSymbol(OPERATOR_MINUS);
@@ -160,7 +160,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneSumWithNegativeFirst() {
+    public void testOperationSumNegativeFirstOperand() {
         model.saveOperationSymbol(OPERATOR_MINUS);
         model.saveNumber(NUMBER_FOUR);
         model.saveOperationSymbol(OPERATOR_SUM);
@@ -171,7 +171,19 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneSumWithNegativeBoth() {
+    public void testOperationSumBothOperandNegative() {
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_SUM);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(OPERATOR_MINUS + NUMBER_FOUR, model.getResult());
+    }
+
+    @Test
+    public void testOperationMinusFirstOperandNegative() {
         model.saveOperationSymbol(OPERATOR_MINUS);
         model.saveNumber(NUMBER_TWO);
         model.saveOperationSymbol(OPERATOR_MINUS);
@@ -182,7 +194,50 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneDivideWithNegativeBoth() {
+    public void testOperationMinusSecondOperandNegative() {
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(NUMBER_FOUR, model.getResult());
+    }
+
+    @Test
+    public void testOperationMinus() {
+        model.saveNumber(NUMBER_FOUR);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(NUMBER_TWO, model.getResult());
+    }
+
+    @Test
+    public void testOperationMinusBothOperandsNegative() {
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(NUMBER_ZERO, model.getResult());
+    }
+
+    @Test
+    public void testOperationDivide() {
+        model.saveNumber(NUMBER_FOUR);
+        model.saveOperationSymbol(OPERATOR_DIVIDE);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(NUMBER_TWO, model.getResult());
+    }
+
+    @Test
+    public void testOperationDivideBothOperandsNegative() {
         model.saveOperationSymbol(OPERATOR_MINUS);
         model.saveNumber(NUMBER_FOUR);
         model.saveOperationSymbol(OPERATOR_DIVIDE);
@@ -194,7 +249,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneDivideWithNegativeFirst() {
+    public void testOperationDivideFirstOperandNegative() {
         model.saveOperationSymbol(OPERATOR_MINUS);
         model.saveNumber(NUMBER_FOUR);
         model.saveOperationSymbol(OPERATOR_DIVIDE);
@@ -205,7 +260,7 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneDivideWithNegativeSecond() {
+    public void testOperationDivideSecondOperandNegative() {
         model.saveNumber(NUMBER_FOUR);
         model.saveOperationSymbol(OPERATOR_DIVIDE);
         model.saveOperationSymbol(OPERATOR_MINUS);
@@ -216,77 +271,57 @@ public class CalculatorPresenterTest {
     }
 
     @Test
-    public void testOperatorResultPressedErrorNoneMultiplyWithNegativeSecond() {
-        model.saveNumber(NUMBER_TWO);
-        model.saveOperationSymbol(OPERATOR_MULTIPLY);
-        model.saveOperationSymbol(OPERATOR_MINUS);
-        model.saveNumber(NUMBER_TWO);
-        presenter.operatorResultPressed();
-        verify(view).drawNumber(model.getResult());
-        assertEquals(OPERATOR_MINUS + NUMBER_FOUR, model.getResult());
-    }
-
-    @Test
-    public void testOperatorResultPressedErrorNoneMultiplyWithNegativeFirst() {
-        model.saveOperationSymbol(OPERATOR_MINUS);
-        model.saveNumber(NUMBER_TWO);
-        model.saveOperationSymbol(OPERATOR_MULTIPLY);
-        model.saveNumber(NUMBER_TWO);
-        presenter.operatorResultPressed();
-        verify(view).drawNumber(model.getResult());
-        assertEquals(OPERATOR_MINUS + NUMBER_FOUR, model.getResult());
-    }
-
-    @Test
-    public void testOperatorResultPressedErrorNoneMultiplyBothNegatives() {
-        model.saveOperationSymbol(OPERATOR_MINUS);
-        model.saveNumber(NUMBER_TWO);
-        model.saveOperationSymbol(OPERATOR_MULTIPLY);
-        model.saveOperationSymbol(OPERATOR_MINUS);
-        model.saveNumber(NUMBER_TWO);
-        presenter.operatorResultPressed();
-        verify(view).drawNumber(model.getResult());
-        assertEquals(NUMBER_FOUR, model.getResult());
-    }
-
-    @Test
-    public void testOperatorResultPressedErrorNoneMinus() {
-        model.saveNumber(NUMBER_FOUR);
-        model.saveOperationSymbol(OPERATOR_MINUS);
-        model.saveNumber(NUMBER_TWO);
-        presenter.operatorResultPressed();
-        verify(view).drawNumber(model.getResult());
-        assertEquals(NUMBER_TWO, model.getResult());
-    }
-
-    @Test
-    public void testOperatorResultPressedErrorNoneDivide() {
-        model.saveNumber(NUMBER_FOUR);
-        model.saveOperationSymbol(OPERATOR_DIVIDE);
-        model.saveNumber(NUMBER_TWO);
-        presenter.operatorResultPressed();
-        verify(view).drawNumber(model.getResult());
-        assertEquals(NUMBER_TWO, model.getResult());
-    }
-
-    @Test //REVISAR OPERACION DE MULTIPLICACION
-    public void testOperatorResultPressedErrorNoneMultiply() {
-        model.saveNumber(NUMBER_TWO);
-        model.saveOperationSymbol(OPERATOR_MULTIPLY);
-        model.saveNumber(NUMBER_TWO);
-        presenter.operatorResultPressed();
-        //verify(view).drawNumber(model.getResult());
-        assertEquals(NUMBER_FOUR, model.getResult());
-    }
-
-    @Test
-    public void testOperatorResultPressedErrorMessageDivision() {
+    public void testOperationDivideByZero() {
         model.saveNumber(NUMBER_TWO);
         model.saveOperationSymbol(OPERATOR_DIVIDE);
         model.saveNumber(NUMBER_ZERO);
         presenter.operatorResultPressed();
         verify(view).showErrorDivision();
         assertEquals(ERROR_MESSAGE_DIVISION, model.getError());
+    }
+
+    @Test
+    public void testOperationMultiply() {
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_MULTIPLY);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(NUMBER_FOUR, model.getResult());
+    }
+
+    @Test
+    public void testOperationMultiplySecondOperandNegative() {
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_MULTIPLY);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(OPERATOR_MINUS + NUMBER_FOUR, model.getResult());
+    }
+
+    @Test
+    public void testOperationMultiplyFirstOperandNegative() {
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_MULTIPLY);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(OPERATOR_MINUS + NUMBER_FOUR, model.getResult());
+    }
+
+    @Test
+    public void testOperationMultiplyBothOperandsNegative() {
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        model.saveOperationSymbol(OPERATOR_MULTIPLY);
+        model.saveOperationSymbol(OPERATOR_MINUS);
+        model.saveNumber(NUMBER_TWO);
+        presenter.operatorResultPressed();
+        verify(view).drawNumber(model.getResult());
+        assertEquals(NUMBER_FOUR, model.getResult());
     }
 
     @Test
